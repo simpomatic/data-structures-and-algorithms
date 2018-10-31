@@ -51,7 +51,7 @@ namespace Simpomatic.MergeSort
         /// <summary>
         /// Recursive Merge sort algorithm.
         /// </summary>
-        /// <param name="arr">The array to sort</param>
+        /// <param name="arr">Unsorted array</param>
         /// <param name="startingIndex">Starting index of the subarray</param>
         /// <param name="endingIndex">Ending index of the subarray</param>
         /// <returns></returns>

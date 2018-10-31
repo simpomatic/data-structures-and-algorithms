@@ -5,7 +5,7 @@ namespace Simpomatic.SelectionSort
     class SelectionSort
     {
         /// <summary>
-        /// Selection Sort.
+        /// Implemenation of the Selection sort algorithm.
         /// </summary>
         /// <param name="arr">Unsorted array</param>
         static void selectionSort(ref int[] arr)

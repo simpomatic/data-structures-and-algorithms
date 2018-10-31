@@ -146,7 +146,7 @@ namespace Simpomatic.QuickSort
         /// Implementation of the quick sort algorithm. Utilizes a base case as well as uses the median
         /// of the first, middle, and last index values to get the partition point.
         /// </summary>
-        /// <param name="arr">The array to be sorted</param>
+        /// <param name="arr">Unsorted array</param>
         /// <param name="startingIndex">The starting index of the subarray</param>
         /// <param name="endingIndex">The ending index of the subarray</param>
         static void quickSort(ref int[] arr, int startingIndex, int endingIndex)

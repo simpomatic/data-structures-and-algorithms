@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpomatic.SharedFunctional
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpomatic.SelectionSort", "Simpomatic.SelectionSort\Simpomatic.SelectionSort.csproj", "{9E5DBE9D-E6F3-4A7C-9C47-8A4470411B6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpomatic.InsertionSort", "Simpomatic.InsertionSort\Simpomatic.InsertionSort.csproj", "{5CC22890-5853-448D-A1A3-7646152C8A5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9E5DBE9D-E6F3-4A7C-9C47-8A4470411B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E5DBE9D-E6F3-4A7C-9C47-8A4470411B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E5DBE9D-E6F3-4A7C-9C47-8A4470411B6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CC22890-5853-448D-A1A3-7646152C8A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CC22890-5853-448D-A1A3-7646152C8A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CC22890-5853-448D-A1A3-7646152C8A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CC22890-5853-448D-A1A3-7646152C8A5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
