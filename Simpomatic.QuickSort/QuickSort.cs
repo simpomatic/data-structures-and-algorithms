@@ -168,29 +168,16 @@ namespace Simpomatic.QuickSort
             }
         }
 
-        /// <summary>
-        /// Method to display the array to the console.
-        /// </summary>
-        /// <param name="arr">The given array</param>
-        /// <param name="n">The length of the array</param>
-        static void printArray(int[] arr, int n)
-        {
-            for (int i = 0; i < n; i++)
-                Console.Write(arr[i] + " ");
-
-            Console.WriteLine();
-        }
-
         // Driver program
         static void Main(string[] args)
         {
             Console.WriteLine("Original array ");
             int[] arr = { 10, 7, 8, 11, 1, 10, 23, 7, 8, 5, 2, 2 ,2, 2, 9, 1, 5 };
             int n = arr.Length;
-            printArray(arr, n);
+            SharedFunctionality.printArray(arr, n);
             quickSort(ref arr, 0, n - 1);
             Console.WriteLine("Sorted array ");
-            printArray(arr, n);
+            SharedFunctionality.printArray(arr, n);
             Console.ReadKey();
         }
     }

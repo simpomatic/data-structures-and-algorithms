@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpomatic.QuickSort", "Simpomatic.QuickSort\Simpomatic.QuickSort.csproj", "{D58245E8-05A8-452F-993F-DF81FF44929F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpomatic.MergeSort", "Simpomatic.MergeSort\Simpomatic.MergeSort.csproj", "{A23F0D43-68BC-4B5A-AE9C-1E963B9D8ED2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpomatic.SharedFunctionality", "Simpomatic.SharedFunctionality\Simpomatic.SharedFunctionality.csproj", "{5671834F-500F-4044-A523-3C1854C00FC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{D58245E8-05A8-452F-993F-DF81FF44929F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D58245E8-05A8-452F-993F-DF81FF44929F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D58245E8-05A8-452F-993F-DF81FF44929F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A23F0D43-68BC-4B5A-AE9C-1E963B9D8ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A23F0D43-68BC-4B5A-AE9C-1E963B9D8ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A23F0D43-68BC-4B5A-AE9C-1E963B9D8ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A23F0D43-68BC-4B5A-AE9C-1E963B9D8ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5671834F-500F-4044-A523-3C1854C00FC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5671834F-500F-4044-A523-3C1854C00FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5671834F-500F-4044-A523-3C1854C00FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5671834F-500F-4044-A523-3C1854C00FC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
