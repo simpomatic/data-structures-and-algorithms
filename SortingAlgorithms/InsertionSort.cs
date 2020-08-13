@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SortingAlgorithms
+﻿namespace SortingAlgorithms
 {
     class InsertionSort
     {
