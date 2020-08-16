@@ -23,5 +23,12 @@ namespace SortingAlgorithms.Tests
             int[] possiblySortedArray = (new MergeSort()).Sort(unsortedArray);
             Assert.AreEqual(sortedArray, possiblySortedArray);
         }
+
+        [Test]
+        public void SelectionSortTest()
+        {
+            int[] possiblySortedArray = (new SelectionSort()).Sort(unsortedArray);
+            Assert.AreEqual(sortedArray, possiblySortedArray);
+        }
     }
 }

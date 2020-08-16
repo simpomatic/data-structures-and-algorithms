@@ -1,19 +1,19 @@
 ﻿namespace SortingAlgorithms
 {
-    class SelectionSort
+    public class SelectionSort : ISortingAlgorithm
     {
         /// <summary>
         /// Implemenation of the Selection sort algorithm.
         /// </summary>
         /// <param name="arr">Unsorted array</param>
-        static void selectionSort(ref int[] arr)
+        public int[] Sort(int[] arr)
         {
             // Iterate through each index in the array
-            for(int i = 0; i < arr.Length; i++)
+            for(int currentIndex = 0; currentIndex < arr.Length; currentIndex++)
             {
-                int currentMinimumIndex = 0;
+                int currentMinimumIndex = currentIndex;
                 // Scan the entire array sequentially to find the minimum value
-                for (int j = i; j < arr.Length; j++)
+                for (int j = currentIndex + 1; j < arr.Length; j++)
                 {
                     if (arr[currentMinimumIndex] > arr[j])
                     {
@@ -22,10 +22,12 @@
                 }
 
                 // Swap the value at the current index with the minimum value at the given index
-                int temp = arr[i];
-                arr[i] = arr[currentMinimumIndex];
+                int temp = arr[currentIndex];
+                arr[currentIndex] = arr[currentMinimumIndex];
                 arr[currentMinimumIndex] = temp;
             }
+
+            return arr;
         }
     }
 }
