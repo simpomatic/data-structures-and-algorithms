@@ -11,7 +11,7 @@ namespace SortingAlgorithms
         /// <param name="leftArray">An array to be merged</param>
         /// <param name="rightArray">Another array to be used for the merge</param>
         /// <returns></returns>
-        static int[] MergeArrays(int[] leftArray, int[] rightArray)
+        private static int[] MergeArrays(int[] leftArray, int[] rightArray)
         {
             // New temporary array to hold the combination of both left and right arrays
             int[] combinedArray = new int[leftArray.Length + rightArray.Length];
@@ -53,9 +53,7 @@ namespace SortingAlgorithms
             // Base case: Single item in each array
             if (arr.Length == 1)
             {
-                // All components are now split
-                int[] single = { arr[0] };
-                return single;
+                return arr;
             }
             else
             {
