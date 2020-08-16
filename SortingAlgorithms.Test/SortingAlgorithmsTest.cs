@@ -32,6 +32,13 @@ namespace SortingAlgorithms.Tests
         }
 
         [Test]
+        public void QuickSortTest()
+        {
+            int[] possiblySortedArray = (new QuickSort()).Sort(unsortedArray);
+            Assert.AreEqual(sortedArray, possiblySortedArray);
+        }
+
+        [Test]
         public void SelectionSortTest()
         {
             int[] possiblySortedArray = (new SelectionSort()).Sort(unsortedArray);

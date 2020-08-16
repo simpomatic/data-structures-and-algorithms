@@ -2,10 +2,10 @@
 
 namespace SortingAlgorithms
 {
-    class QuickSort
+    public class QuickSort : ISortingAlgorithm
     {
         #region Constants and fields
-        private static readonly int _baseCaseSize = 3;
+        private static readonly int baseCaseSize = 3;
         #endregion
 
         /// <summary>
@@ -16,7 +16,7 @@ namespace SortingAlgorithms
         /// <param name="arr">The array passed by reference</param>
         /// <param name="startingIndex">The starting index of the subarray</param>
         /// <param name="endingIndex">The ending index of the subarray</param>
-        static void manualSort(ref int[] arr, int startingIndex, int endingIndex)
+        private static void ManualSort(ref int[] arr, int startingIndex, int endingIndex)
         {
             if (startingIndex < endingIndex)
             {
@@ -51,7 +51,7 @@ namespace SortingAlgorithms
         /// <param name="startingIndex">The starting index of the subarray</param>
         /// <param name="endingIndex">The ending index of the subarray</param>
         /// <param name="partitionIndex">A reference to the index of the partition</param>
-        static void performSwapsAroundPartition(ref int[] arr, int startingIndex, int endingIndex, ref int partitionIndex)
+        private static void PerformSwapsAroundPartition(ref int[] arr, int startingIndex, int endingIndex, ref int partitionIndex)
         {
             // Automatically floors any decimal/double
             int middleIndex = (startingIndex + endingIndex) / 2;
@@ -127,7 +127,7 @@ namespace SortingAlgorithms
         /// <param name="startingIndex">The starting index of the subarray</param>
         /// <param name="endingIndex">The ending index of the subarray</param>
         /// <returns>The index of the median value</returns>
-        static int getPartitionIndex(ref int[] arr, int startingIndex, int endingIndex)
+        private static int GetPartitionIndex(ref int[] arr, int startingIndex, int endingIndex)
         {
             int middleIndex = (startingIndex + endingIndex) / 2;
             // Supposedly one of the most efficient ways to get the median of three numbers.
@@ -149,23 +149,30 @@ namespace SortingAlgorithms
         /// <param name="arr">Unsorted array</param>
         /// <param name="startingIndex">The starting index of the subarray</param>
         /// <param name="endingIndex">The ending index of the subarray</param>
-        static void quickSort(ref int[] arr, int startingIndex, int endingIndex)
+        private static int[] QuickSortHelper(ref int[] arr, int startingIndex, int endingIndex)
         {
             // Ensures that the value of the starting index is lowering than that of the ending
             // index. Also, we are making sure the base case has not been met.
-            if (startingIndex + (_baseCaseSize - 1) < endingIndex)
+            if (startingIndex + (baseCaseSize - 1) < endingIndex)
             {
-                int partitionIndex = getPartitionIndex(ref arr, startingIndex, endingIndex);
-                performSwapsAroundPartition(ref arr, startingIndex, endingIndex, ref partitionIndex);
-                quickSort(ref arr, startingIndex, partitionIndex - 1);
-                quickSort(ref arr, partitionIndex + 1, endingIndex);
+                int partitionIndex = GetPartitionIndex(ref arr, startingIndex, endingIndex);
+                PerformSwapsAroundPartition(ref arr, startingIndex, endingIndex, ref partitionIndex);
+                QuickSortHelper(ref arr, startingIndex, partitionIndex - 1);
+                QuickSortHelper(ref arr, partitionIndex + 1, endingIndex);
             }
             // To ensure we do not waste time sorting a singular item
             else if (startingIndex < endingIndex)
             {
                 // Manually sort
-                manualSort(ref arr, startingIndex, endingIndex);
+                ManualSort(ref arr, startingIndex, endingIndex);
             }
+
+            return arr;
+        }
+
+        public int[] Sort(int[] arr)
+        {
+            return QuickSortHelper(ref arr, 0, arr.Length - 1);
         }
     }
 }
