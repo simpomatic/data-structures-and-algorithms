@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Simpomatic
+namespace SortingAlgorithms
 {
     public class SharedFunctionality
     {

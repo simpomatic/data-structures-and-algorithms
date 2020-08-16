@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Simpomatic.InsertionSort
+﻿namespace SortingAlgorithms
 {
     class InsertionSort
     {
@@ -44,18 +42,6 @@ namespace Simpomatic.InsertionSort
                     }
                 }
             }
-        }
-
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Original array ");
-            int[] arr = { 10, 7, 8, 11, 1, 10, 23, 7, 8, 5, 2, 2, 2, 2, 9, 1, 5 };
-            int n = arr.Length;
-            SharedFunctionality.printArray(arr, n);
-            Console.WriteLine("Sorted array ");
-            insertionSort(ref arr);
-            SharedFunctionality.printArray(arr, n);
-            Console.ReadKey();
         }
     }
 }

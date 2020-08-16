@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Simpomatic.QuickSort
+namespace SortingAlgorithms
 {
     class QuickSort
     {
@@ -166,19 +166,6 @@ namespace Simpomatic.QuickSort
                 // Manually sort
                 manualSort(ref arr, startingIndex, endingIndex);
             }
-        }
-
-        // Driver program
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Original array ");
-            int[] arr = { 10, 7, 8, 11, 1, 10, 23, 7, 8, 5, 2, 2 ,2, 2, 9, 1, 5 };
-            int n = arr.Length;
-            SharedFunctionality.printArray(arr, n);
-            quickSort(ref arr, 0, n - 1);
-            Console.WriteLine("Sorted array ");
-            SharedFunctionality.printArray(arr, n);
-            Console.ReadKey();
         }
     }
 }

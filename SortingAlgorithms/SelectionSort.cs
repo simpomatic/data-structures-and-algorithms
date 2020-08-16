@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Simpomatic.SelectionSort
+﻿namespace SortingAlgorithms
 {
     class SelectionSort
     {
@@ -28,19 +26,6 @@ namespace Simpomatic.SelectionSort
                 arr[i] = arr[currentMinimumIndex];
                 arr[currentMinimumIndex] = temp;
             }
-        }
-
-        // Driver program
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Original array ");
-            int[] arr = { 10, 7, 8, 11, 1, 10, 23, 7, 8, 5, 2, 2, 2, 2, 9, 1, 5 };
-            int n = arr.Length;
-            SharedFunctionality.printArray(arr, n);
-            Console.WriteLine("Sorted array ");
-            selectionSort(ref arr);
-            SharedFunctionality.printArray(arr, n);
-            Console.ReadKey();
         }
     }
 }

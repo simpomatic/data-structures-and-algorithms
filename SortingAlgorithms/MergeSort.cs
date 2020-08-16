@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Simpomatic.MergeSort
+﻿namespace SortingAlgorithms
 {
     class MergeSort
     {
@@ -75,18 +73,6 @@ namespace Simpomatic.MergeSort
 
                 return combinedArray;
             }
-        }
-
-        // Driver program
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Original array ");
-            int[] arr = { 10, 7, 8, 11, 1, 10, 23, 7, 8, 5, 2, 2, 2, 2, 9, 1, 5 };
-            int n = arr.Length;
-            SharedFunctionality.printArray(arr, n);
-            Console.WriteLine("Sorted array ");
-            SharedFunctionality.printArray(mergeSort(arr, 0, n - 1), n);
-            Console.ReadKey();
         }
     }
 }
