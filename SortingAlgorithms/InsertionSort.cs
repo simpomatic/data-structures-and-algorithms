@@ -1,12 +1,12 @@
 ﻿namespace SortingAlgorithms
 {
-    class InsertionSort
+    public class InsertionSort : ISortingAlgorithm
     {
         /// <summary>
         /// Implementation of the Insertion sort algorithm.
         /// </summary>
         /// <param name="arr">Unsorted array</param>
-        static void insertionSort(ref int[] arr)
+        public int[] Sort(int[] arr)
         {
             // Iterate through the entire array
             for (int index = 0; index < arr.Length; index++)
@@ -22,7 +22,7 @@
                     while (reverseCounter >= 0)
                     {
                         // Returns the index of the lowest value of the two
-                        int minimumValueIndex = (arr[currentIndex] > arr[reverseCounter]) 
+                        int minimumValueIndex = (arr[currentIndex] > arr[reverseCounter])
                             ? reverseCounter : currentIndex;
                         if (minimumValueIndex == currentIndex)
                         {
@@ -42,6 +42,8 @@
                     }
                 }
             }
+
+            return arr;
         }
     }
 }

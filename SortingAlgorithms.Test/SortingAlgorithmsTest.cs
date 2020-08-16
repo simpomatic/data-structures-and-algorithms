@@ -18,6 +18,13 @@ namespace SortingAlgorithms.Tests
         }
 
         [Test]
+        public void InsertionSortTest()
+        {
+            int[] possiblySortedArray = (new InsertionSort()).Sort(unsortedArray);
+            Assert.AreEqual(sortedArray, possiblySortedArray);
+        }
+
+        [Test]
         public void MergeSortTest()
         {
             int[] possiblySortedArray = (new MergeSort()).Sort(unsortedArray);
