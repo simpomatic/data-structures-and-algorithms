@@ -44,5 +44,12 @@ namespace SortingAlgorithms.Tests
             int[] possiblySortedArray = (new SelectionSort()).Sort(unsortedArray);
             Assert.AreEqual(sortedArray, possiblySortedArray);
         }
+
+        [Test]
+        public void ShellSortTest()
+        {
+            int[] possiblySortedArray = (new ShellSort()).Sort(unsortedArray);
+            Assert.AreEqual(sortedArray, possiblySortedArray);
+        }
     }
 }
