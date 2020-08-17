@@ -1,6 +1,8 @@
-﻿namespace SortingAlgorithms
+﻿using System;
+
+namespace SortingAlgorithms
 {
-    class MergeSort
+    public class MergeSort : ISortingAlgorithm
     {
         /// <summary>
         /// Provides the functionality to merge two arrays together while sorting them during
@@ -9,7 +11,7 @@
         /// <param name="leftArray">An array to be merged</param>
         /// <param name="rightArray">Another array to be used for the merge</param>
         /// <returns></returns>
-        static int[] mergeArrays(int[] leftArray, int[] rightArray)
+        private static int[] MergeArrays(int[] leftArray, int[] rightArray)
         {
             // New temporary array to hold the combination of both left and right arrays
             int[] combinedArray = new int[leftArray.Length + rightArray.Length];
@@ -46,30 +48,21 @@
             return combinedArray;
         }
 
-        /// <summary>
-        /// Recursive Merge sort algorithm.
-        /// </summary>
-        /// <param name="arr">Unsorted array</param>
-        /// <param name="startingIndex">Starting index of the subarray</param>
-        /// <param name="endingIndex">Ending index of the subarray</param>
-        /// <returns></returns>
-        static int[] mergeSort(int[] arr, int startingIndex, int endingIndex)
+        public int[] Sort(int[] arr)
         {
             // Base case: Single item in each array
-            if (startingIndex == endingIndex)
+            if (arr.Length == 1)
             {
-                // All components are now split
-                int[] single = { arr[startingIndex] };
-                return single;
+                return arr;
             }
             else
             {
-                int middleIndex = (startingIndex + endingIndex) / 2;
-                int[] leftArray = mergeSort(arr, startingIndex, middleIndex);
-                int[] rightArray = mergeSort(arr, middleIndex + 1, endingIndex);
+                int middleIndex = arr.Length / 2;
+                int[] leftArray = Sort(arr.SubArray(0, middleIndex));
+                int[] rightArray = Sort(arr.SubArray(middleIndex, (arr.Length - middleIndex)));
 
                 // New temporary array to hold the combination of both left and right arrays
-                int[] combinedArray = mergeArrays(leftArray, rightArray);
+                int[] combinedArray = MergeArrays(leftArray, rightArray);
 
                 return combinedArray;
             }
