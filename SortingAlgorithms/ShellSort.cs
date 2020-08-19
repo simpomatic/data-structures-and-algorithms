@@ -10,7 +10,7 @@ namespace SortingAlgorithms
         /// <param name="arr">Unsorted array</param>
         /// <param name="startIndex">Starting index</param>
         /// <param name="gap">Current gap size</param>
-        public void GapInsertionSort(ref int[] arr, int startIndex, int gap)
+        private void GapInsertionSort(ref int[] arr, int startIndex, int gap)
         {
             int currentPosition = startIndex;
 
