@@ -12,31 +12,28 @@ namespace SortingAlgorithms
         /// <param name="gap">Current gap size</param>
         public void GapInsertionSort(ref int[] arr, int startIndex, int gap)
         {
-            for (int index = startIndex; index < arr.Length; index += gap)
+            int currentPosition = startIndex;
+
+            // Make sure the current position plus the gap does not exceed array length
+            while (currentPosition + gap < arr.Length)
             {
-                int currentPosition = index;
-
-                // Make sure the current position plus the gap does not exceed array length
-                while (currentPosition + gap < arr.Length)
+                if (arr[currentPosition + gap] < arr[currentPosition])
                 {
-                    if (arr[currentPosition + gap] < arr[currentPosition])
-                    {
-                        int tempValue = arr[currentPosition];
-                        arr[currentPosition] = arr[currentPosition + gap];
-                        arr[currentPosition + gap] = tempValue;
-                    } else if (currentPosition - gap >= 0 && arr[currentPosition] < arr[currentPosition - gap])
-                    {
-                        int tempValue = arr[currentPosition];
-                        arr[currentPosition] = arr[currentPosition - gap];
-                        arr[currentPosition - gap] = tempValue;
-                        currentPosition -= gap;
-                    } else
-                    {
-                        currentPosition += gap;
-                    }
+                    int tempValue = arr[currentPosition];
+                    arr[currentPosition] = arr[currentPosition + gap];
+                    arr[currentPosition + gap] = tempValue;
                 }
-
-
+                else if (currentPosition - gap >= startIndex && arr[currentPosition] < arr[currentPosition - gap])
+                {
+                    int tempValue = arr[currentPosition];
+                    arr[currentPosition] = arr[currentPosition - gap];
+                    arr[currentPosition - gap] = tempValue;
+                    currentPosition -= gap;
+                }
+                else
+                {
+                    currentPosition += gap;
+                }
             }
         }
 
