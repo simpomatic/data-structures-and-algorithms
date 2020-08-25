@@ -1,4 +1,7 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Trees.Shared
 {
@@ -59,6 +62,35 @@ namespace Trees.Shared
         public bool IsLeaf()
         {
             return RightChild == null && LeftChild == null;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            // Check for null and compare run-time types.
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                TreeNode treeNode = (TreeNode) obj;
+                return GetHashCode() == treeNode.GetHashCode();
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            var bytes = Encoding.UTF8.GetBytes(ToString());
+            using (var hash = SHA512.Create())
+            {
+                var hashedInputBytes = hash.ComputeHash(bytes);
+                return BitConverter.ToInt32(hashedInputBytes);
+            }
+        }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
         }
     }
 }

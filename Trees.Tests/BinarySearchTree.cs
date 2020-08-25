@@ -51,7 +51,7 @@ namespace Trees.Tests
         {
             TreeNode treeNode = new TreeNode(20, "different_value");
             BinarySearchTree.Insert(treeNode);
-            Assert.AreEqual(treeNode.Value, BinarySearchTree.Root.Value);
+            Assert.AreEqual(treeNode, BinarySearchTree.Root);
         }
     }
 }

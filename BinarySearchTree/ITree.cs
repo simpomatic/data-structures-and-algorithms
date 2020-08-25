@@ -34,17 +34,12 @@ namespace Trees
 
         public override int GetHashCode()
         {
-            var bytes = Encoding.UTF8.GetBytes(ToString());
-            using (var hash = SHA512.Create())
-            {
-                var hashedInputBytes = hash.ComputeHash(bytes);
-                return BitConverter.ToInt32(hashedInputBytes);
-            }
+            return Root.GetHashCode();
         }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(Root);
+            return Root.ToString();
         }
     }
 }
