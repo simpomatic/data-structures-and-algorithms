@@ -17,12 +17,14 @@ namespace SortingAlgorithms
             // Make sure the current position plus the gap does not exceed array length
             while (currentPosition + gap < arr.Length)
             {
+                // Check to see if the item ahead of the current one has a lower value
                 if (arr[currentPosition + gap] < arr[currentPosition])
                 {
                     int tempValue = arr[currentPosition];
                     arr[currentPosition] = arr[currentPosition + gap];
                     arr[currentPosition + gap] = tempValue;
                 }
+                // Check to see if the current value is greater than the previous value
                 else if (currentPosition - gap >= startIndex && arr[currentPosition] < arr[currentPosition - gap])
                 {
                     int tempValue = arr[currentPosition];
