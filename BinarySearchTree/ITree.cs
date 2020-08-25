@@ -1,11 +1,15 @@
-﻿using Trees.Shared;
+﻿using Newtonsoft.Json;
+using System;
+using System.Security.Cryptography;
+using System.Text;
+using Trees.Shared;
 
 namespace Trees
 {
     public abstract class ITree
     {
         #region Constants and fields
-        public TreeNode root { get; set; }
+        public TreeNode Root { get; protected set; }
         #endregion
 
         public abstract TreeNode Get(int key);
@@ -13,5 +17,34 @@ namespace Trees
         public abstract void Insert(TreeNode node);
 
         public abstract void Delete(int key);
+
+        public override bool Equals(Object obj)
+        {
+            // Check for null and compare run-time types.
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                ITree tree = (ITree) obj;
+                return GetHashCode() == tree.GetHashCode();
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            var bytes = Encoding.UTF8.GetBytes(ToString());
+            using (var hash = SHA512.Create())
+            {
+                var hashedInputBytes = hash.ComputeHash(bytes);
+                return BitConverter.ToInt32(hashedInputBytes);
+            }
+        }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(Root);
+        }
     }
 }

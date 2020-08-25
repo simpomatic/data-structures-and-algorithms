@@ -1,13 +1,20 @@
-﻿namespace Trees.Shared
+﻿using Newtonsoft.Json;
+
+namespace Trees.Shared
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class TreeNode
     {
         #region Fields and constants
-        public int key { get; set; }
-        public string value { get; set; }
-        public TreeNode leftChild { get; set; }
-        public TreeNode rightChild { get; set; }
-        public TreeNode parent { get; set; }
+        [JsonProperty]
+        public int Key { get; set; }
+        [JsonProperty]
+        public string Value { get; set; }
+        [JsonProperty]
+        public TreeNode LeftChild { get; set; }
+        [JsonProperty]
+        public TreeNode RightChild { get; set; }
+        public TreeNode Parent { get; set; }
         #endregion
 
         public TreeNode(
@@ -17,41 +24,41 @@
             TreeNode rightChild = null,
             TreeNode parent = null
         ) {
-            this.key = key;
-            this.value = value;
-            this.leftChild = leftChild;
-            this.rightChild = rightChild;
-            this.parent = parent;
+            Key = key;
+            Value = value;
+            LeftChild = leftChild;
+            RightChild = rightChild;
+            Parent = parent;
         }
 
-        public bool hasLeftChild()
+        public bool HasLeftChild()
         {
-            return leftChild != null;
+            return LeftChild != null;
         }
 
-        public bool hasRightChild()
+        public bool HasRightChild()
         {
-            return rightChild != null;
+            return RightChild != null;
         }
 
-        public bool isLeftChild()
+        public bool IsLeftChild()
         {
-            return parent != null && parent.leftChild == this;
+            return Parent != null && Parent.LeftChild == this;
         }
 
-        public bool isRightChild()
+        public bool IsRightChild()
         {
-            return parent != null && parent.rightChild == this;
+            return Parent != null && Parent.RightChild == this;
         }
 
-        public bool isRoot()
+        public bool IsRoot()
         {
-            return parent == null;
+            return Parent == null;
         }
 
-        public bool isLeaf()
+        public bool IsLeaf()
         {
-            return rightChild == null && leftChild == null;
+            return RightChild == null && LeftChild == null;
         }
     }
 }

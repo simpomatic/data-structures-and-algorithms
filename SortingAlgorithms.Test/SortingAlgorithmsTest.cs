@@ -3,6 +3,7 @@ using System;
 
 namespace SortingAlgorithms.Tests
 {
+    [TestFixture]
     public class Tests
     {
         #region Constants and fields
