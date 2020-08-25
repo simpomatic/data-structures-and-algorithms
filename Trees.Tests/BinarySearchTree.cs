@@ -31,7 +31,7 @@ namespace Trees.Tests
         }
 
         [Test]
-        public void InsertTreeNodeLessThanRootNodeTest()
+        public void InsertTreeNodeWithKeyLessThanRootNodeTest()
         {
             TreeNode treeNode  = new TreeNode(10, "less_than_root");
             BinarySearchTree.Insert(treeNode);
@@ -39,7 +39,7 @@ namespace Trees.Tests
         }
 
         [Test]
-        public void InsertTreeNodeGreaterThanRootNodeTest()
+        public void InsertTreeNodeWithKeyGreaterThanRootNodeTest()
         {
             TreeNode treeNode = new TreeNode(30, "greater_than_root");
             BinarySearchTree.Insert(treeNode);
