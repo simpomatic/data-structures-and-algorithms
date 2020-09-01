@@ -4,6 +4,14 @@ namespace Trees
 {
     public class BinarySearchTree : ITree
     {
+        public BinarySearchTree() : base()
+        {
+        }
+
+        public BinarySearchTree(TreeNode treeNode) : base(treeNode)
+        {
+        }
+
         public override TreeNode Get(int key)
         {
             return GetTreeNode(key, Root);
