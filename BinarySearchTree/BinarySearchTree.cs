@@ -1,28 +1,9 @@
-﻿using System;
-using Trees.Shared;
+﻿using Trees.Shared;
 
 namespace Trees
 {
     public class BinarySearchTree : ITree
     {
-        public BinarySearchTree()
-        {
-            Root = null;
-        }
-
-        public BinarySearchTree(TreeNode root)
-        {
-            Root = root;
-        }
-
-        public TreeNode this[int key]
-        {
-            get
-            {
-                return Get(key);
-            }
-        }
-
         public override TreeNode Get(int key)
         {
             return GetTreeNode(key, Root);

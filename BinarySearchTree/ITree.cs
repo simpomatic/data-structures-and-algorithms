@@ -9,6 +9,24 @@ namespace Trees
         public TreeNode Root { get; protected set; }
         #endregion
 
+        public ITree()
+        {
+            Root = null;
+        }
+
+        public ITree(TreeNode treeNode)
+        {
+            Root = treeNode;
+        }
+
+        public TreeNode this[int key]
+        {
+            get
+            {
+                return Get(key);
+            }
+        }
+
         public abstract TreeNode Get(int key);
 
         public abstract void Insert(TreeNode node);
