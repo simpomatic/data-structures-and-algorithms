@@ -18,6 +18,24 @@ namespace Trees.Shared
         [JsonProperty]
         public TreeNode RightChild { get; set; }
         public TreeNode Parent { get; set; }
+        [JsonProperty]
+        public int Depth
+        {
+            get
+            {
+                // Setup variables
+                int depth = 0;
+                TreeNode currentNode = this;
+                // Traverse up the hierarchy until you reach the root node
+                while (currentNode.Parent != null)
+                {
+                    currentNode = currentNode.Parent;
+                    depth++;
+                }
+
+                return depth;
+            }
+        }
         #endregion
 
         public TreeNode(
