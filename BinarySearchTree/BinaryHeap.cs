@@ -2,107 +2,86 @@
 
 namespace Trees
 {
+    public enum HeapOrderingType
+    {
+        Max,
+        Min
+    }
+
     public class BinaryHeap
     {
         #region Constants and fields
+        private HeapOrderingType HeapOrderingType;
         private TreeNode Root;
         #endregion
 
-        public BinaryHeap()
+        public BinaryHeap(HeapOrderingType heapOrderingType)
         {
+            HeapOrderingType = heapOrderingType;
             Root = null;
         }
 
-        public BinaryHeap(TreeNode treeNode)
+        public BinaryHeap(HeapOrderingType heapOrderingType, TreeNode treeNode)
         {
+            HeapOrderingType = heapOrderingType;
             Root = treeNode;
+        }
+
+        private void SwapTreeNodes(ref TreeNode parentNode, ref TreeNode childNode)
+        {
+            TreeNode temp = parentNode;
+            // Swap child node into parent's place
+            parentNode.Key = childNode.Key;
+            parentNode.Value = childNode.Value;
+            // Using the temporary tree node, put the parent in the child's place
+            childNode.Key = temp.Key;
+            childNode.Value = temp.Value;
+        }
+
+        private void PercolateUp(TreeNode treeNode)
+        {
+            if (HeapOrderingType == HeapOrderingType.Max)
+            {
+                if (treeNode.Depth > 0 && treeNode.Parent.Key < treeNode.Key)
+                {
+                    TreeNode parentNode = treeNode.Parent;
+                    SwapTreeNodes(ref parentNode, ref treeNode);
+                    // Run the same logic again on the parent (formerly the given tree node)
+                    PercolateUp(parentNode);
+                }
+            }
+            else
+            {
+                if (treeNode.Depth > 0 && treeNode.Parent.Key > treeNode.Key)
+                {
+                    TreeNode parentNode = treeNode.Parent;
+                    SwapTreeNodes(ref parentNode, ref treeNode);
+                    // Run the same logic again on the parent (formerly the given tree node)
+                    PercolateUp(parentNode);
+                }
+            }
         }
 
         public void Insert(TreeNode treeNode)
         {
+            // Insert the tree node into the binary heap
             if (Root == null)
             {
                 Root = treeNode;
-            } else if (Root.Key > treeNode.Key)
-            {
-                
-            }
-        }
-
-        private TreeNode BreadthFirstTraversal(TreeNode currentNode, int maxDepth)
-        {
-            if (currentNode.HasLeftChild() && currentNode.Depth < maxDepth)
-            {
-                return BreadthFirstTraversal(currentNode.LeftChild, maxDepth);
-            } else if (currentNode.Depth > 0 && currentNode.IsLeftChild())
-            {
-                if (currentNode.Parent.HasRightChild())
-                {
-                    if (currentNode.Parent.RightChild.IsLeaf())
-                    {
-                        return currentNode;
-                    } else
-                    {
-                        return BreadthFirstTraversal(currentNode.Parent.RightChild, maxDepth);
-                    }
-                } else
-                {
-                    return currentNode.Parent;
-                }
-            } else if (currentNode.Depth > 0)
-            {
-                if (currentNode.Parent.LeftChild.HasRightChild() && !currentNode.HasRightChild())
-                {
-                    return currentNode;
-                }
-                else if (currentNode.Parent.LeftChild.HasRightChild() && currentNode.HasRightChild() && currentNode.Depth > 1)
-                {
-                    int counter = currentNode.Depth;
-                    bool isRightSide = false;
-                    TreeNode temp = currentNode;
-
-                    // Traverse to the root
-                    while (0 < counter)
-                    {
-                        if (counter == 1)
-                        {
-                            isRightSide = temp.IsRightChild();
-                        }
-                        temp = temp.Parent;
-                        counter--;
-                        if (counter > 1 && temp.IsLeftChild())
-                        {
-                            break;
-                        }
-                    }
-                    // Traverse back down to the right side of the tree
-                    bool isFirstIteration = true;
-                    while (counter < maxDepth)
-                    {
-                        if (isFirstIteration)
-                        {
-                            isFirstIteration = false;
-                            temp = isRightSide ? temp.LeftChild : temp.RightChild;
-                        }
-                        else
-                        {
-                            temp = temp.LeftChild;
-                        }
-                        counter++;
-                    }
-                    return isRightSide ? BreadthFirstTraversal(temp, maxDepth + 1) : BreadthFirstTraversal(temp, maxDepth);
-                }
-                else if (currentNode.Parent.LeftChild.HasRightChild() && currentNode.HasRightChild())
-                {
-                    return BreadthFirstTraversal(currentNode.Parent.LeftChild, maxDepth + 1);
-                }
-                else
-                {
-                    return currentNode.Parent.LeftChild;
-                }
             } else
             {
-                return currentNode;
+                TreeNode lastTreeNode = TreeTraversals.BreadthFirstTraversal(Root, Root.Depth + 1);
+                if (!lastTreeNode.HasLeftChild())
+                {
+                    lastTreeNode.LeftChild = treeNode;
+                    // Percolate the given tree node up to satisfy the heap ordering property based on the type of heap
+                    PercolateUp(lastTreeNode.LeftChild);
+                } else
+                {
+                    lastTreeNode.RightChild = treeNode;
+                    // Percolate the given tree node up to satisfy the heap ordering property based on the type of heap
+                    PercolateUp(lastTreeNode.LeftChild);
+                }
             }
         }
     }
