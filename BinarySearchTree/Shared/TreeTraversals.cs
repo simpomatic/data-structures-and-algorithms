@@ -1,12 +1,19 @@
-﻿namespace Trees.Shared
+﻿using System;
+
+namespace Trees.Shared
 {
     public class TreeTraversals
     {
-        public static TreeNode BreadthFirstTraversal(TreeNode currentNode, int maxDepth)
+        public static TreeNode BreadthFirstTraversal(TreeNode currentNode, int maxDepth, bool debugMode = false)
         {
+            if (debugMode)
+            {
+                Console.Write($"[{currentNode.Key}:{currentNode.Value}] => ");
+            }
+
             if (currentNode.HasLeftChild() && currentNode.Depth < maxDepth)
             {
-                return BreadthFirstTraversal(currentNode.LeftChild, maxDepth);
+                return BreadthFirstTraversal(currentNode.LeftChild, maxDepth, debugMode);
             }
             else if (currentNode.Depth > 0 && currentNode.IsLeftChild())
             {
@@ -18,7 +25,7 @@
                     }
                     else
                     {
-                        return BreadthFirstTraversal(currentNode.Parent.RightChild, maxDepth);
+                        return BreadthFirstTraversal(currentNode.Parent.RightChild, maxDepth, debugMode);
                     }
                 }
                 else
@@ -67,11 +74,11 @@
                         }
                         counter++;
                     }
-                    return isRightSide ? BreadthFirstTraversal(temp, maxDepth + 1) : BreadthFirstTraversal(temp, maxDepth);
+                    return isRightSide ? BreadthFirstTraversal(temp, maxDepth + 1, debugMode) : BreadthFirstTraversal(temp, maxDepth, debugMode);
                 }
                 else if (currentNode.Parent.LeftChild.HasRightChild() && currentNode.HasRightChild())
                 {
-                    return BreadthFirstTraversal(currentNode.Parent.LeftChild, maxDepth + 1);
+                    return BreadthFirstTraversal(currentNode.Parent.LeftChild.LeftChild, maxDepth + 1, debugMode);
                 }
                 else
                 {

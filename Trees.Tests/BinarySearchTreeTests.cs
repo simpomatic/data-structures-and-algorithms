@@ -4,7 +4,7 @@ using Trees.Shared;
 namespace Trees.Tests
 {
     [TestFixture]
-    public class Tests
+    public class BinarySearchTreeTests
     {
         #region Fields and constants
         private BinarySearchTree BinarySearchTree;
