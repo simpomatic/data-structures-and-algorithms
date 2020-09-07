@@ -73,11 +73,13 @@ namespace Trees
                 TreeNode lastTreeNode = TreeTraversals.BreadthFirstTraversal(Root, Root.Depth + 1);
                 if (!lastTreeNode.HasLeftChild())
                 {
+                    treeNode.Parent = lastTreeNode;
                     lastTreeNode.LeftChild = treeNode;
                     // Percolate the given tree node up to satisfy the heap ordering property based on the type of heap
                     PercolateUp(lastTreeNode.LeftChild);
                 } else
                 {
+                    treeNode.Parent = lastTreeNode;
                     lastTreeNode.RightChild = treeNode;
                     // Percolate the given tree node up to satisfy the heap ordering property based on the type of heap
                     PercolateUp(lastTreeNode.LeftChild);
