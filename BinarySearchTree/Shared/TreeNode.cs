@@ -19,6 +19,22 @@ namespace Trees.Shared
         public TreeNode RightChild { get; set; }
         public TreeNode Parent { get; set; }
         [JsonProperty]
+        public int Count
+        {
+            get
+            {
+                if (IsLeaf())
+                {
+                    return 1;
+                } else
+                {
+                    int leftChildCount = LeftChild != null ? LeftChild.Count : 0;
+                    int rightChildCount = RightChild != null ? RightChild.Count : 0;
+                    return leftChildCount + rightChildCount;
+                }
+            }
+        }
+        [JsonProperty]
         public int Depth
         {
             get
@@ -34,6 +50,22 @@ namespace Trees.Shared
                 }
 
                 return depth;
+            }
+        }
+        [JsonProperty]
+        public int MaxDepth
+        {
+            get
+            {
+                if (IsLeaf())
+                {
+                    return Depth;
+                } else
+                {
+                    int leftMaxDepth = HasLeftChild() ? LeftChild.MaxDepth : 0;
+                    int rightMaxDepth = HasRightChild() ? RightChild.MaxDepth : 0;
+                    return Math.Max(leftMaxDepth, rightMaxDepth);
+                }
             }
         }
         #endregion
